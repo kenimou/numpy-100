@@ -159,110 +159,94 @@ np.datetime64('today', 'D') - np.timedelta64(1, 'D')
 np.datetime64('today', 'D')
 np.datetime64('today', 'D') + np.timedelta64(1, 'D')
 
-#%% [markdown]
-# #### 34. How to get all the dates corresponding to the month of July 2016? (★★☆)
+#%% 34. How to get all the dates corresponding to the month of July 2016? (★★☆)
+np.arange('2016-07-01', '2016-08-01', dtype='datetime64') # NOTE: yes you can do this... 
 
-#%%
+#%% 35. How to compute ((A+B)*(-A/2)) in place (without copy)? (★★☆)
+A = np.random.rand(2,2)
+B = np.random.rand(2,2)
+np.add(A, B, out=B) # B = (A+B)
+np.divide(A, 2, out=A) # A = A/2
+np.negative(A, out=A) # A = -A/2
+np.multiply(A, B, out=A) # A = (A+B)*(-A/2)
 
+#%% 36. Extract the integer part of a random array using 5 different methods (★★☆)
+arr = np.random.rand(10) * 20
+print(arr)
+arr.astype(int) # 1
+arr//1 # 2
+np.floor(arr) # 3
+arr - arr%1 # 4 
+np.trunc(arr) # 5 NOTE: discard decimals regard less the sign
 
-#%% [markdown]
-# #### 35. How to compute ((A+B)\*(-A/2)) in place (without copy)? (★★☆)
+#%% 37. Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆)
+np.repeat(np.arange(5).reshape(1,5), 5, axis=0)
 
-#%%
+#%% 38. Consider a generator function that generates 10 integers and use it to build an array (★☆☆)
+def gen():
+    while True:
+        yield np.random.randint(10)
+# NOTE: build date from generator 
+np.fromiter(gen(), dtype=np.int32, count=10) # count means number of elements to read
+#%% 39. Create a vector of size 10 with values ranging from 0 to 1, both excluded (★★☆)
+# Not really sure what this is asking
+np.linspace(0,10,12)[1:-1]
 
+#%% 40. Create a random vector of size 10 and sort it (★★☆)
+arr = np.random.rand(10)
+arr.sort()
+arr
 
-#%% [markdown]
-# #### 36. Extract the integer part of a random array using 5 different methods (★★☆)
+#%% 41. How to sum a small array faster than np.sum? (★★☆)
+# NOTE: reduce is faster than sum because sum callles add.reduce... 
+arr = np.random.rand(10)
+np.add.reduce(arr)
 
-#%%
+#%% 42. Consider two random array A and B, check if they are equal (★★☆)
+A = np.ones(5)
+B = np.ones(6)
+np.sum(A!=B) == 0
+np.array_equal(A,B) # NOTE: numpy way, check shape and elements
 
+#%% 43. Make an array immutable (read-only) (★★☆)
+arr = np.random.rand(10)
+arr.flags.writeable = False # NOTE
 
-#%% [markdown]
-# #### 37. Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆)
+#%% 44. Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates (★★☆)
+arr = np.random.rand(10,2) 
+np.concatenate([np.sqrt(arr[:,0]**2+arr[:,1]**2).reshape(-1,1), np.arctan(arr[:,0]/arr[:,1]).reshape(-1,1)], axis=1)
 
-#%%
+#%% 45. Create random vector of size 10 and replace the maximum value by 0 (★★☆)
+arr = np.random.rand(10)
+arr[arr==arr.max()] = 0
+arr[arr.argmax()] = 0 # NOTE better solutions
+arr
 
+#%% 46. Create a structured array with `x` and `y` coordinates covering the [0,1]x[0,1] area (★★☆)
+arr = np.zeros((5,5), [('x', float), ('y', float)])
+arr['x'], arr['y'] = np.meshgrid(np.linspace(0,1,5),np.linspace(0,1,5))
+arr
 
-#%% [markdown]
-# #### 38. Consider a generator function that generates 10 integers and use it to build an array (★☆☆)
+#%% 47. Given two arrays, X and Y, construct the Cauchy matrix C (Cij =1/(xi - yj))
+X = np.random.rand(10)
+Y = np.random.rand(10)
+1/np.subtract.outer(X,Y) # NOTE: returns a matrix
 
-#%%
+#%% 48. Print the minimum and maximum representable value for each numpy scalar type (★★☆)
+for dtype in [np.int8, np.int32, np.int64]:
+   print(np.iinfo(dtype).min, np.iinfo(dtype).max)
+for dtype in [np.float32, np.float64]:
+   print(np.finfo(dtype).min, np.finfo(dtype).max)
 
+#%% 49. How to print all the values of an array? (★★☆)
+np.set_printoptions(threshold=np.nan) # NOTE config 
 
-#%% [markdown]
-# #### 39. Create a vector of size 10 with values ranging from 0 to 1, both excluded (★★☆)
+#%% 50. How to find the closest value (to a given scalar) in a vector? (★★☆)
+arr = np.random.rand(10)
+scalar = 0.2
+arr[np.argmin(np.abs(arr-scalar))]
 
-#%%
-
-
-#%% [markdown]
-# #### 40. Create a random vector of size 10 and sort it (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 41. How to sum a small array faster than np.sum? (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 42. Consider two random array A and B, check if they are equal (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 43. Make an array immutable (read-only) (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 44. Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 45. Create random vector of size 10 and replace the maximum value by 0 (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 46. Create a structured array with `x` and `y` coordinates covering the \[0,1\]x\[0,1\] area (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# ####  47. Given two arrays, X and Y, construct the Cauchy matrix C (Cij =1/(xi - yj))
-
-#%%
-
-
-#%% [markdown]
-# #### 48. Print the minimum and maximum representable value for each numpy scalar type (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 49. How to print all the values of an array? (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 50. How to find the closest value (to a given scalar) in a vector? (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 51. Create a structured array representing a position (x,y) and a color (r,g,b) (★★☆)
+#%% 51. Create a structured array representing a position (x,y) and a color (r,g,b) (★★☆)
 
 #%%
 
