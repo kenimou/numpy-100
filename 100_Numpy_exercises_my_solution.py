@@ -1,239 +1,163 @@
 # 100 numpy exercises - my solution
 # Keni Mou
 
-#%% [markdown]
-# #### 1. Import the numpy package under the name `np` (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 2. Print the numpy version and the configuration (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 3. Create a null vector of size 10 (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 4.  How to find the memory size of any array (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 5.  How to get the documentation of the numpy add function from the command line? (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 6.  Create a null vector of size 10 but the fifth value which is 1 (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 7.  Create a vector with values ranging from 10 to 49 (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 8.  Reverse a vector (first element becomes last) (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 9.  Create a 3x3 matrix with values ranging from 0 to 8 (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 10. Find indices of non-zero elements from \[1,2,0,0,4,0\] (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 11. Create a 3x3 identity matrix (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 12. Create a 3x3x3 array with random values (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 13. Create a 10x10 array with random values and find the minimum and maximum values (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 14. Create a random vector of size 30 and find the mean value (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 15. Create a 2d array with 1 on the border and 0 inside (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 16. How to add a border (filled with 0's) around an existing array? (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 17. What is the result of the following expression? (★☆☆)
-#%% [markdown]
-# ```python
-# 0 * np.nan
-# np.nan == np.nan
-# np.inf > np.nan
-# np.nan - np.nan
-# np.nan in set([np.nan])
-# 0.3 == 3 * 0.1
-# ```
-
-#%%
-
-
-#%% [markdown]
-# #### 18. Create a 5x5 matrix with values 1,2,3,4 just below the diagonal (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 19. Create a 8x8 matrix and fill it with a checkerboard pattern (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 20. Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element?
-
-#%%
-
-
-#%% [markdown]
-# #### 21. Create a checkerboard 8x8 matrix using the tile function (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 22. Normalize a 5x5 random matrix (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 23. Create a custom dtype that describes a color as four unsigned bytes (RGBA) (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 24. Multiply a 5x3 matrix by a 3x2 matrix (real matrix product) (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 25. Given a 1D array, negate all elements which are between 3 and 8, in place. (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 26. What is the output of the following script? (★☆☆)
-#%% [markdown]
-# ```python
-# # Author: Jake VanderPlas
-# 
-# print(sum(range(5),-1))
-# from numpy import *
-# print(sum(range(5),-1))
-# ```
-
-#%%
-
-
-#%% [markdown]
-# #### 27. Consider an integer vector Z, which of these expressions are legal? (★☆☆)
-#%% [markdown]
-# ```python
-# Z**Z
-# 2 << Z >> 2
-# Z <- Z
-# 1j*Z
-# Z/1/1
-# Z<Z>Z
-# ```
-
-#%%
-
-
-#%% [markdown]
-# #### 28. What are the result of the following expressions?
-#%% [markdown]
-# ```python
-# np.array(0) / np.array(0)
-# np.array(0) // np.array(0)
-# np.array([np.nan]).astype(int).astype(float)
-# ```
-
-#%%
-
-
-#%% [markdown]
-# #### 29. How to round away from zero a float array ? (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 30. How to find common values between two arrays? (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 31. How to ignore all numpy warnings (not recommended)? (★☆☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 32. Is the following expressions true? (★☆☆)
-#%% [markdown]
-# ```python
-# np.sqrt(-1) == np.emath.sqrt(-1)
-# ```
-
-#%%
-
-
-#%% [markdown]
-# #### 33. How to get the dates of yesterday, today and tomorrow? (★☆☆)
-
-#%%
-
+#%% 1. Import the numpy package under the name `np` (★☆☆)
+import numpy as np
+
+#%% 2. Print the numpy version and the configuration (★☆☆)
+print(np.__version__)
+np.show_config() 
+
+#%% 3. Create a null vector of size 10 (★☆☆)
+np.zeros(10)
+
+#%% 4.  How to find the memory size of any array (★☆☆)
+# NOTE: in byte. size: len, itemsize: byte
+arr = np.zeros(10)
+arr.size * arr.itemsize
+
+#%% 5.  How to get the documentation of the numpy add function from the command line? (★☆☆)
+np.info(np.add)
+
+#%% 6.  Create a null vector of size 10 but the fifth value which is 1 (★☆☆)
+arr = np.zeros(10)
+arr[4] = 1
+arr
+
+#%% 7.  Create a vector with values ranging from 10 to 49 (★☆☆)
+np.arange(10,50)
+
+#%% 8.  Reverse a vector (first element becomes last) (★☆☆)
+arr = np.arange(10)
+arr[::-1]
+
+#%% 9.  Create a 3x3 matrix with values ranging from 0 to 8 (★☆☆)
+np.arange(9).reshape(3,3)
+
+#%% 10. Find indices of non-zero elements from \[1,2,0,0,4,0\] (★☆☆)
+# NOTE: 
+arr = np.array([1,2,0,0,4,0])
+np.nonzero(arr) 
+
+#%% 11. Create a 3x3 identity matrix (★☆☆)
+# NOTE:
+np.eye(3)
+
+#%% 12. Create a 3x3x3 array with random values (★☆☆)
+np.random.rand(3,3,3)
+
+#%% 13. Create a 10x10 array with random values and find the minimum and maximum values (★☆☆)
+arr = np.random.rand(10,10)
+arr.min(), arr.max()
+
+#%% 14. Create a random vector of size 30 and find the mean value (★☆☆)
+arr = np.random.rand(30)
+arr.mean()
+
+#%% 15. Create a 2d array with 1 on the border and 0 inside (★☆☆)
+arr = np.ones((5,5))
+arr[1:-1,1:-1]= 0
+arr
+
+#%% 16. How to add a border (filled with 0's) around an existing array? (★☆☆)
+# NOTE: add a border, dimension should change
+arr = np.random.randint(1, 10, size=(3,7))
+np.pad(arr, 1, 'constant', constant_values=0)
+
+#%% 17. What is the result of the following expression? (★☆☆)
+0 * np.nan # nan
+np.nan == np.nan # False
+np.inf > np.nan # NOTE: False
+np.nan - np.nan # nan
+np.nan in set([np.nan]) # NOTE: True
+0.3 == 3 * 0.1  # NOTE: False float has bad precision
+
+#%% 18. Create a 5x5 matrix with values 1,2,3,4 just below the diagonal (★☆☆)
+# NOTE: diag: If `v` is a 1-D array, return a 2-D array with `v` on the `k`-th diagonal
+np.diag(1+np.arange(4),k=-1)
+
+#%% 19. Create a 8x8 matrix and fill it with a checkerboard pattern (★☆☆)
+# NOTE: INDEXING!!!
+arr = np.zeros((8,8))
+arr[::2,::2] = 1
+arr[1::2,1::2] = 1 
+arr
+
+#%% 20. Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element?
+x = 99//(7*8)
+y = 99%(7*8)//8
+z = 99%(7*8)%8 
+x,y,z
+# NOTE: here is a built-in funciton...
+print(np.unravel_index(99,(6,7,8)))
+
+#%% 21. Create a checkerboard 8x8 matrix using the tile function (★☆☆)
+np.tile(np.array([[0,1],[1,0]]), (4,4))
+
+#%% 22. Normalize a 5x5 random matrix (★☆☆)
+arr = np.random.rand(5,5) 
+(arr - arr.mean()) / arr.std() 
+
+#%% 23. Create a custom dtype that describes a color as four unsigned bytes (RGBA) (★☆☆)
+# NOTE
+color = np.dtype([
+    ('R', np.ubyte, 1), # (name, dtype, size)
+    ('G', np.ubyte, 1),
+    ('B', np.ubyte, 1),
+    ('A', np.ubyte, 1),
+])
+
+#%% 24. Multiply a 5x3 matrix by a 3x2 matrix (real matrix product) (★☆☆)
+mat_1 = np.random.rand(5,3)
+mat_2 = np.random.rand(3,2)
+np.dot(mat_1, mat_2) # NOTE mat_1 @ mat_2 also works
+
+#%% 25. Given a 1D array, negate all elements which are between 3 and 8, in place. (★☆☆)
+arr = np.random.randint(10, size=20)
+np.negative(arr, where=np.logical_and(arr>=3, arr<=8), out=arr)
+arr
+
+#%% 26. What is the output of the following script? (★☆☆)
+print(sum(range(5),-1)) # 9
+from numpy import *
+print(sum(range(5),-1)) # NOTE: 10 because np.sum(a, axis)
+
+#%%  27. Consider an integer vector Z, which of these expressions are legal? (★☆☆)
+Z = np.random.randint(10, size=10)
+print(Z)
+Z**Z # legal
+2 << Z >> 2 # legal NOTE: shift bytes
+Z <- Z # legal NOTE: comparison
+1j*Z # legal NOTE: complex number 
+Z/1/1 # legal
+Z<Z>Z # illegal NOTE: need any or all
+
+#%% 28. What are the result of the following expressions?
+np.array(0) / np.array(0) # nan
+np.array(0) // np.array(0) # 0
+np.array([np.nan]).astype(int).astype(float) # array([-2.14748365e+09]) NOTE:
+
+#%% 29. How to round away from zero a float array ? (★☆☆)
+# NOTE 
+arr = np.random.uniform(-10,10,10)
+np.copysign(np.ceil(np.abs(arr)), arr)
+
+#%% 30. How to find common values between two arrays? (★☆☆)
+arr_1 = np.random.randint(10, size=5)
+arr_2 = np.random.randint(10, size=5)
+np.intersect1d(arr_1, arr_2) # NOTE: numpy implementation
+set(arr_1).intersection(set(arr_2)) # NOTE: python equivalent 
+
+#%% 31. How to ignore all numpy warnings (not recommended)? (★☆☆)
+np.seterr(all="ignore") # NOTE: suicide 
+
+#%% 32. Is the following expressions true? (★☆☆)
+np.sqrt(-1) == np.emath.sqrt(-1) # False
+
+#%% 33. How to get the dates of yesterday, today and tomorrow? (★☆☆)
+np.datetime64('today', 'D') - np.timedelta64(1, 'D')
+np.datetime64('today', 'D')
+np.datetime64('today', 'D') + np.timedelta64(1, 'D')
 
 #%% [markdown]
 # #### 34. How to get all the dates corresponding to the month of July 2016? (★★☆)
