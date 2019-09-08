@@ -247,128 +247,87 @@ scalar = 0.2
 arr[np.argmin(np.abs(arr-scalar))]
 
 #%% 51. Create a structured array representing a position (x,y) and a color (r,g,b) (★★☆)
+np.zeros(1, [
+    ('pos', [
+        ('x', np.uint, 1),
+        ('y', np.uint, 1),
+    ]),
+    ('color', [
+        ('r', np.uint, 1),
+        ('g', np.uint, 1),
+        ('b', np.uint, 1),
+    ])
+])
 
-#%%
-
-
-#%% [markdown]
-# #### 52. Consider a random vector with shape (100,2) representing coordinates, find point by point distances (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 53. How to convert a float (32 bits) array into an integer (32 bits) in place?
-
-#%%
-
-
-#%% [markdown]
-# #### 54. How to read the following file? (★★☆)
-#%% [markdown]
-# ```
-# 1, 2, 3, 4, 5
-# 6,  ,  , 7, 8
-#  ,  , 9,10,11
-# ```
-
-#%%
+#%% 52. Consider a random vector with shape (100,2) representing coordinates, find point by point distances (★★☆)
 
 
-#%% [markdown]
-# #### 55. What is the equivalent of enumerate for numpy arrays? (★★☆)
+#%% 53. How to convert a float (32 bits) array into an integer (32 bits) in place?
+np.zeros(10, dtype=np.float32).astype(np.int32, copy=False)
 
-#%%
+#%% 54. How to read the following file? (★★☆)
+# NOTE: read from text file 
+from io import StringIO
+string = StringIO("1, 2, 3, 4, 5\n6,  ,  , 7, 8\n,  , 9,10,11")
+np.genfromtxt(string, delimiter=',')
 
+#%% 55. What is the equivalent of enumerate for numpy arrays? (★★☆)
+arr = np.random.rand(3,4)
+for i, v in np.ndenumerate(arr):
+    print (i, v)
 
-#%% [markdown]
-# #### 56. Generate a generic 2D Gaussian-like array (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 57. How to randomly place p elements in a 2D array? (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 58. Subtract the mean of each row of a matrix (★★☆)
-
-#%%
+#%% 56. Generate a generic 2D Gaussian-like array (★★☆)
 
 
-#%% [markdown]
-# #### 59. How to sort an array by the nth column? (★★☆)
+#%% 57. How to randomly place p elements in a 2D array? (★★☆)
+arr = np.zeros((4,5))
+mask = np.random.choice(np.arange(20), 3, replace=False)
+np.put(arr, mask, 1) # NOTE: Replaces specified elements of an array with given values. Works on the flattened target array. 
+arr
 
-#%%
+#%% 58. Subtract the mean of each row of a matrix (★★☆)
+arr = np.random.rand(4,5)
+arr - arr.mean(axis=1, keepdims=True) # NOTE axis=1 is row
 
+#%% 59. How to sort an array by the nth column? (★★☆)
+arr = np.random.rand(4,5)
+arr[arr[:,2].argsort()] # Returns the indices that would sort an array.
 
-#%% [markdown]
-# #### 60. How to tell if a given 2D array has null columns? (★★☆)
+#%% 60. How to tell if a given 2D array has null columns? (★★☆)
+arr = np.array([np.nan, 1])
+sum(np.isnan(arr)) > 0
 
-#%%
+#%% 61. Find the nearest value from a given value in an array (★★☆)
+arr = np.random.rand(20)
+val = 0.2
+arr[np.abs(arr-val).argmin()]
 
-
-#%% [markdown]
-# #### 61. Find the nearest value from a given value in an array (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 62. Considering two arrays with shape (1,3) and (3,1), how to compute their sum using an iterator? (★★☆)
-
-#%%
-
-
-#%% [markdown]
-# #### 63. Create an array class that has a name attribute (★★☆)
-
-#%%
+#%% 62. Considering two arrays with shape (1,3) and (3,1), how to compute their sum using an iterator? (★★☆)
 
 
-#%% [markdown]
-# #### 64. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)? (★★★)
-
-#%%
+#%% 63. Create an array class that has a name attribute (★★☆)
 
 
-#%% [markdown]
-# #### 65. How to accumulate elements of a vector (X) to an array (F) based on an index list (I)? (★★★)
-
-#%%
+#%% 64. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)? (★★★)
 
 
-#%% [markdown]
-# #### 66. Considering a (w,h,3) image of (dtype=ubyte), compute the number of unique colors (★★★)
-
-#%%
+#%% 65. How to accumulate elements of a vector (X) to an array (F) based on an index list (I)? (★★★)
 
 
-#%% [markdown]
-# #### 67. Considering a four dimensions array, how to get sum over the last two axis at once? (★★★)
-
-#%%
+#%% 66. Considering a (w,h,3) image of (dtype=ubyte), compute the number of unique colors (★★★)
 
 
-#%% [markdown]
-# #### 68. Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset  indices? (★★★)
-
-#%%
+#%% 67. Considering a four dimensions array, how to get sum over the last two axis at once? (★★★)
 
 
-#%% [markdown]
-# #### 69. How to get the diagonal of a dot product? (★★★)
-
-#%%
+#%% 68. Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset  indices? (★★★)
 
 
-#%% [markdown]
-# #### 70. Consider the vector \[1, 2, 3, 4, 5\], how to build a new vector with 3 consecutive zeros interleaved between each value? (★★★)
+#%% 69. How to get the diagonal of a dot product? (★★★)
 
-#%%
+
+#%% 70. Consider the vector \[1, 2, 3, 4, 5\], how to build a new vector with 3 consecutive zeros interleaved between each value? (★★★)
+
 
 
 #%% [markdown]
